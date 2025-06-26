@@ -1,0 +1,100 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.video-container {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  padding: 20px;
+  background: #000;
+}
+
+.video-box {
+  flex: 1;
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.controls {
+  padding: 20px;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.user-info input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-list button {
+  padding: 8px 15px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.incoming-call {
+  background: #ffeb3b;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.incoming-call button {
+  margin: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.incoming-call button:first-child {
+  background: #4CAF50;
+  color: white;
+}
+
+.incoming-call button:last-child {
+  background: #f44336;
+  color: white;
+}
+
+button {
+  padding: 8px 15px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
