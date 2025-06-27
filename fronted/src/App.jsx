@@ -30,18 +30,21 @@ function App() {
     socket.current = io(import.meta.env.VITE_SERVER_URL);
 
     // Get user media
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then(stream => {
-        setStream(stream);
-        if (userVideo.current) {
-          userVideo.current.srcObject = stream;
-          userVideo.current.onloadedmetadata = () => {
-            userVideo.current.play().catch(e => console.error('Local video play error:', e));
-          };
-        }
-      })
-      .catch(err => console.error('Media device error:', err));
-
+    if (typeof window !== 'undefined' && navigator.mediaDevices?.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
+          setStream(stream);
+          if (userVideo.current) {
+            userVideo.current.srcObject = stream;
+            userVideo.current.onloadedmetadata = () => {
+              userVideo.current.play().catch(e => console.error('Local video play error:', e));
+            };
+          }
+        })
+        .catch(err => console.error('Media device error:', err));
+    } else {
+      console.warn("Media devices not supported in this environment.");
+    }
     // Socket event listeners
     socket.current.on("yourID", (id) => {
       setYourID(id);
@@ -213,7 +216,7 @@ function App() {
         </div>
       </div>
 
-      <div className="controls">
+      <div className="controls" style={{ background: "grey" }}>
         <div className="user-info">
           <input
             type="text"
